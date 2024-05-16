@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="feeds">
+    <div class="feed">
+        <div class="head">
+            <div class="user">
+                <div class="profile-photo">
+                    <img src="image/profile 3.jpg" alt="">
+                </div>
+                <div class="ingo">
+                    <h3>{{project.author}}</h3>
+                    <small>{{project.created_on}}</small>
+                    <form method="post" class="create-post" style="display: flex; flex-direction: column;">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <a href="{% url 'project-detail' object.pk %}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            <span class="edit">
+                <i class="uil uil-ellipsis-h"></i>
+            </span>
+        </div>
+        
+          
+    </div>
+
+</div>
+
+    
+    
+{% endblock content %}

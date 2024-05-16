@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Hello, {{user}}!</h1>
+
+    {% for project in project_list %}
+    
+    {{project.author}}<br>
+    {{project.created_on}}<br>
+    {{project.project_name}}<br>
+    {{project.project_description}}<br>
+    {{project.institute}}<br>
+    {{project.university}}<br>
+    {{project.project_url}}<br>
+
+    
+    {% endfor %}
+    
+{% endblock content %}

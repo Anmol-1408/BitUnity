@@ -1,0 +1,488 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alston</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="icon" type="image/x-icon" href="image/favicon.png">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <img src="image/social logo.png" class="logo">
+            <h2 class="log">
+                Alston
+            </h2>
+            <div class="search-bar">
+                <i class="uil uil-search"></i>
+                <input type="search" placeholder="Search for creators.">
+            </div>
+            <div class="create">
+                <label class="btn btn-primar" for="create-post"><a href="{% url "logout" %}"
+                        style="color: white;">Log-out</a></label>
+                <div class="profile-photo">
+                    <a href="{% url 'profile' user.profile.pk %}"><img src="{{ request.user.profile.picture.url }}" /></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- ----------------MAIN--------------------- -->
+    <main>
+        <div class="container">
+            <!-- ----------------LEFT--------------------- -->
+            <div class="left">
+                <a class="profile">
+                    <div class="profile-photo">
+                        <img src="{{ request.user.profile.picture.url }}" />
+                    </div>
+                    <div class="handle">
+                        <h4>{{request.user.profile.name}}</h4>
+                        <p class="text-muted">@{{request.user}}</p>
+                    </div>
+                </a>
+                <!-- ----------------SIDEBAR--------------------- -->
+                <div class="sidebar">
+                    <a href="{% url 'project-list' %}" class="menu-item active">
+                        <span><i class="uil uil-estate"></i></span>
+                        <h3>Home</h3>
+                    </a>
+                    <a href="http://127.0.0.1:5500/data.html" class="menu-item">
+                        <span><i class="uil uil-users-alt"></i></span>
+                        <h3>friend</h3>
+                    </a>
+                    <a class="menu-item" id="notification-popup">
+                        <span><i class="uil uil-bell" onclick="myFunction()"><small
+                                    class="notification-count">9+</small></i></span>
+                        <h3 onclick="myFunction()">Notification</h3>
+                    
+                    </a>
+
+                    <a class="menu-item" id="messages-notifications">
+                        <span><i class="uil uil-envelope-alt" onclick="myFunction1()"><small
+                                    class="notification-count">6</small></i></span>
+                        <h3 onclick="myFunction1()">Messages</h3>
+
+
+                    </a>
+                    <a class="menu-item">
+                        <span><i class="uil uil-swatchbook"></i></i></span>
+                        <h3>Memories</h3>
+                    </a>
+                   
+                    </a>
+                    <a class="menu-item" id="theme">
+                        <span><i class="uil uil-palette"></i></span>
+                        <h3>Theme</h3>
+                    </a>
+                    <a href="{% url 'profile' user.profile.pk %}" class="menu-item ">
+                        <span><i class="uil uil-user"></i></span>
+                        <h3>Profile</h3>
+                    </a>
+
+                </div>
+                <!-- ----------------END-LEFT-SIDEBAR--------------------- -->
+                <label for="create-post" class="btn btn-primar">Create Post</label>
+                <div class="messages" id="Message-popup">
+                    <div class="heading">
+                        <h4>Messages</h4>
+                        <i class="uil uil-message"></i>
+                    </div>
+                    <!-- ----------------SEARCHBAR--------------------- -->
+                    <div class="search-bar">
+                        <i class="uil uil-search"></i>
+                        <input type="search" placeholder="Search messages" id="searchbar" onkeyup="search_message()">
+                    </div>
+                    <!-- ----------------MESSAGES CATEGORY--------------------- -->
+                    <div class="category">
+                        <h6 class="active">Primary</h6>
+                        <h6>General</h6>
+                        <h6 class="message-requests">Requests(7)</h6>
+                    </div>
+                    <!-- ----------------MESSAGES--------------------- -->
+                    <div class="scroll">
+                        <div class="message">
+                            <div class="profile-photo">
+                                <img src="image/profile photo11.jpg">
+                                <div class="active"></div>
+                            </div>
+                            <div class="message-body">
+                                <h5>Edem Quist</h5>
+                                <p class="text-muted">Just wake up bruh</p>
+                            </div>
+                        </div>
+                        <!-- ----------------MESSAGES--------------------- -->
+                        <div class="message">
+                            <div class="profile-photo">
+                                <img src="image/profile photo9.jpg">
+                            </div>
+                            <div class="message-body">
+                                <h5>Ronak jha</h5>
+                                <p class="text-muted">:https://pubG./e.xyz </p>
+                            </div>
+                        </div>
+                        <!-- ----------------MESSAGES--------------------- -->
+                        <div class="message">
+                            <div class="profile-photo">
+                                <img src="image/profile photo4.jpg">
+                            </div>
+                            <div class="message-body">
+                                <h5>Skill Lync</h5>
+                                <p class="text-muted">I have already joined.</p>
+                            </div>
+                        </div>
+                        <!-- ----------------MESSAGES--------------------- -->
+                        <div class="message">
+                            <div class="profile-photo">
+                                <img src="image/profile photo8.jpg">
+                                <div class="active"></div>
+                            </div>
+                            <div class="message-body">
+                                <h5>Elowen.</h5>
+                                <p class="text-muted">hii..</p>
+                            </div>
+                        </div>
+                        <!-- ----------------MESSAGES--------------------- -->
+                        <div class="message">
+                            <div class="profile-photo">
+                                <img src="image/profile photo3.jpg">
+                                <div class="active"></div>
+                            </div>
+                            <div class="message-body">
+                                <h5>Alex Qu.</h5>
+                                <p class="text-muted">happy birthday..</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ----------------END OF MESSAGES--------------------- -->
+            </div>
+            <!-- ----------------END-LEFT-SIDEBAR--------------------- -->
+            <div class="middle">
+            {% block content %}
+
+
+
+
+            {% endblock content %}
+            </div>
+            <!-- ----------------RIGHT--------------------- -->
+            <div class="right">
+
+
+                <!-- ----------------FRIEND REQUESTS--------------------- -->
+                <a class=" btn request-btn" onclick="myFunction2()">
+                    <h3>Requests</h3>
+                </a>
+                <div class="friend-requests" id="reuest-popup">
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="image/profile photo10.jpg">
+                            </div>
+                            <div>
+                                <h5>Robin Alex B</h5>
+                                <p class="text-muted">
+                                    8 mutual friends
+                                </p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primar">
+                                Accept
+                            </button>
+                            <button class="btn">
+                                Decline
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="image/profile photo1.jpg">
+                            </div>
+                            <div>
+                                <h5>Harnaze</h5>
+                                <p class="text-muted">
+                                    2 mutual friends
+                                </p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primar">
+                                Accept
+                            </button>
+                            <button class="btn">
+                                Decline
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="image/story7.jpg">
+                            </div>
+                            <div>
+                                <h5>Shivani Shakya</h5>
+                                <p class="text-muted">
+                                    9 mutual friends
+                                </p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primar">
+                                Accept
+                            </button>
+                            <button class="btn">
+                                Decline
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="image/story6.jpg">
+                            </div>
+                            <div>
+                                <h5>Hajia Bintu</h5>
+                                <p class="text-muted">
+                                    4 mutual friends
+                                </p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primar">
+                                Accept
+                            </button>
+                            <button class="btn">
+                                Decline
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- ----------------CONTACT--------------------- -->
+                <div class="contacts">
+                    <div class="contact">
+                        <h3>Contact</h3>
+                        <div>
+                            <span><i class="uil uil-video"></i></span>
+                            <span><i class="uil uil-search"></i></span>
+                            <span><i class="uil uil-ellipsis-h"></i></span>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact1.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Shakya Casper</b>
+                            <small class="text-muted">shakya</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact2.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Ledger Ronan</b>
+                            <small class="text-muted">ledger</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact3.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Colson jasper</b>
+                            <small class="text-muted">colson</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact4.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Genesis Miles</b>
+                            <small class="text-muted">genesis</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact5.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Achilles Fox</b>
+                            <small class="text-muted">achilles</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact6.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Axel Leon</b>
+                            <small class="text-muted">axel</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact7.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Declan Reef</b>
+                            <small class="text-muted">declan</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact8.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Silas Jasper</b>
+                            <small class="text-muted">silas</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact9.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Kai Clive</b>
+                            <small class="text-muted">kai</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact10.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Brantley Hawk</b>
+                            <small class="text-muted">brantley</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact11.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Maverick Leon</b>
+                            <small class="text-muted">maverick</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact12.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Lathan Dehtlin</b>
+                            <small class="text-muted">lathan</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact13.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Lyle Fox</b>
+                            <small class="text-muted">lyle</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact14.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Bishop Leon</b>
+                            <small class="text-muted">bishop</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact15.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Kylen Hawk</b>
+                            <small class="text-muted">kylen</small>
+                        </div>
+                    </div>
+                    <div class="contact-profile">
+                        <div class="profile-photo">
+                            <img src="new image/Contact16.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Avi Finley</b>
+                            <small class="text-muted">avi</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ----------------END OF RIGHT--------------------- -->
+        </div>
+    </main>
+
+    <!-- ----------------THEME CUSTOMIZATION--------------------- -->
+    <div class="customize-theme">
+        <div class="card">
+            <h2>Customize your view</h2>
+            <p class="text-muted">Manage your font size,color,and background</p>
+
+            <!-- ----------------FONT SIZE--------------------- -->
+            <div class="font-size">
+                <h4>Font Size</h4>
+                <div>
+                    <h6>Aa</h6>
+                    <div class="choose-size">
+                        <span class="font-size1"></span>
+                        <span class="font-size2 active"></span>
+                        <span class="font-size3"></span>
+                        <span class="font-size4"></span>
+                        <span class="font-size5"></span>
+                    </div>
+                    <h3>Aa</h3>
+                </div>
+            </div>
+            <!-- ----------------PRIMARY COLORS--------------------- -->
+            <div class="color">
+                <h4>Color</h4>
+                <div class="choose-color">
+                    <span class="color-1 active"></span>
+                    <span class="color-2"></span>
+                    <span class="color-3"></span>
+                    <span class="color-4"></span>
+                    <span class="color-5"></span>
+                </div>
+            </div>
+            <!-- ----------------BACKGROUND COLORS--------------------- -->
+            <div class="background">
+                <h4>Background</h4>
+                <div class="choose-bg">
+                    <div class="bg-1 active">
+                        <span></span>
+                        <h5 for="big-1">Light</h5>
+                    </div>
+                    <div class="bg-2">
+                        <span></span>
+                        <h5 for="big-2">Dim</h5>
+                    </div>
+                    <div class="bg-3">
+                        <span></span>
+                        <h5 for="bg-3">Light Out</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+
+</html>
