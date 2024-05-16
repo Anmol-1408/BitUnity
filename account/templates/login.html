@@ -1,21 +1,24 @@
- {% extends "base.html" %}
-{% block content %} 
+{% extends "base_land.html" %}
+{% block landing %}
 
 <div class="container p-3 my-3">
-<div class="mb-3">
-    <form method="POST"> {% csrf_token %}
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Enter your username "required>
-        </div>
-        <div class="form-group">
-          <label for="pass">Enter your password </label>
-          <input type="password" class="form-control" id="loginpassword" name="loginpassword" placeholder="Enter your password "required>
-        </div>
-       
-          <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+  <div class="mb-3">
+    <form method="POST" action="/login/"> 
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="loginusername" name="loginusername"
+          placeholder="Enter your username " required>
+      </div>
+      <div class="form-group">
+        <label for="pass">Enter your password </label>
+        <input type="password" class="form-control" id="loginpassword" name="loginpassword"
+          placeholder="Enter your password " required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>
-</div>
-   
-{% endblock content %}
+
+{% endblock landing %}

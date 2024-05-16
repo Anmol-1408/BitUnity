@@ -24,7 +24,10 @@
                 </div>
                 <span class="edit">
                     {% if request.user == user %}
-                    {% comment %} <a href="{% url 'profile-edit' profile.pk %}" style="color: #333"><i class="far fa-edit"></i></a> {% endcomment %}
+
+                    <a href="{% url 'profile-edit' profile.pk %}" class="btn btn-secondary"><i
+                            class="far fa-edit"></i>Edit</a>
+
                     {% endif %}
                     {% endif %}
                     <i class="uil uil-ellipsis-h"></i>
@@ -43,6 +46,32 @@
                 <p>{{ profile.bio }}</p>
                 {% endif %}
             </div>
+            Followers : {{numbers_of_followers}}
+            {% if user == request.user %}
+            {% else %}
+            {% if is_following %}
+            <div class="action-button">
+                <div class="interaction-buttons">
+                    <form action="{% url 'remove-follower' profile.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Unfollow</Button>
+                    </form>
+
+                </div>
+            </div>
+            {% else %}
+            <div class="action-button">
+                <div class="interaction-buttons">
+                    <form action="{% url 'add-follower' profile.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Follow</Button>
+                    </form>
+
+                </div>
+            </div>
+            {% endif %}
+            {% endif %}
+
 
 
 
@@ -94,7 +123,7 @@
             <p>Liked by <b>Advika...</b>and <b>2473 others</b></p>
         </div>
 
-        <a href="{% url 'project-detail' project.pk %}" class= "btn btn-primar">View project</a>
+        <a href="{% url 'project-detail' project.pk %}" class="btn btn-primar">View project</a>
     </div>
     {% endfor %}
 

@@ -18,17 +18,21 @@
         <div class="container">
             <img src="image/social logo.png" class="logo">
             <h2 class="log">
-                Alston
+                BitUnity
             </h2>
-            <div class="search-bar">
-                <i class="uil uil-search"></i>
-                <input type="search" placeholder="Search for creators.">
-            </div>
+            <form action="{% url 'search' %}" method="get">
+                <div class="search-bar">
+
+                    <input type="search" placeholder="Search for creators." name="query" value="{{request.Get.query}}">
+                    <button type="submit"><i class="uil uil-search"></i></button>
+                </div>
+            </form>
             <div class="create">
-                <label class="btn btn-primar" for="create-post"><a href="{% url "logout" %}"
+                <label class="btn btn-primar" for="create-post"><a href="{% url 'logout' %}"
                         style="color: white;">Log-out</a></label>
                 <div class="profile-photo">
-                    <a href="{% url 'profile' user.profile.pk %}"><img src="{{ request.user.profile.picture.url }}" /></a>
+                    <a href="{% url 'profile' request.user.profile.pk %}"><img
+                            src="{{ request.user.profile.picture.url }}" /></a>
                 </div>
             </div>
         </div>
@@ -61,7 +65,7 @@
                         <span><i class="uil uil-bell" onclick="myFunction()"><small
                                     class="notification-count">9+</small></i></span>
                         <h3 onclick="myFunction()">Notification</h3>
-                    
+
                     </a>
 
                     <a class="menu-item" id="messages-notifications">
@@ -75,7 +79,7 @@
                         <span><i class="uil uil-swatchbook"></i></i></span>
                         <h3>Memories</h3>
                     </a>
-                   
+
                     </a>
                     <a class="menu-item" id="theme">
                         <span><i class="uil uil-palette"></i></span>
@@ -88,7 +92,7 @@
 
                 </div>
                 <!-- ----------------END-LEFT-SIDEBAR--------------------- -->
-                <label for="create-post" class="btn btn-primar">Create Post</label>
+                <a href="{% url 'create-project' %}" class="btn btn-primar">Create Project</a>
                 <div class="messages" id="Message-popup">
                     <div class="heading">
                         <h4>Messages</h4>
@@ -165,12 +169,12 @@
             </div>
             <!-- ----------------END-LEFT-SIDEBAR--------------------- -->
             <div class="middle">
-            {% block content %}
+                {% block content %}
 
 
 
 
-            {% endblock content %}
+                {% endblock content %}
             </div>
             <!-- ----------------RIGHT--------------------- -->
             <div class="right">

@@ -1,8 +1,8 @@
-{% extends "base.html" %}
-{% block content %} 
+{% extends "base_land.html" %}
+{% block landing %} 
 
 <h1>Landing page {{user}}</h1>
 <a href = "{% url "login" %}" class= "btn btn-primary m-3">Login</a>
 <a href = "{% url "signup" %}" class= "btn btn-primary m-3">Sign up</a>
 
-{% endblock content %}
+{% endblock landing %}

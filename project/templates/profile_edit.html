@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="feeds">
+    <div class="feed">
+        <div class="head">
+            <div class="user">
+               
+                <div class="ingo">
+                    <form method="post" class="create-post" style="display: flex; flex-direction: column;">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <a href="{% url 'profile' profile.pk %}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            <span class="edit">
+                <i class="uil uil-ellipsis-h"></i>
+            </span>
+        </div>
+        
+          
+    </div>
+
+</div>
+
+    
+    
+{% endblock content %}

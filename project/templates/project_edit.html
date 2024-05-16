@@ -1,34 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="feeds">
-    <div class="feed">
-        <div class="head">
-            <div class="user">
-                <div class="profile-photo">
-                    <img src="image/profile 3.jpg" alt="">
-                </div>
-                <div class="ingo">
-                    <h3>{{project.author}}</h3>
-                    <small>{{project.created_on}}</small>
-                    <form method="post" class="create-post" style="display: flex; flex-direction: column;">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <a href="{% url 'project-detail' object.pk %}" class="btn btn-secondary">Cancel</a>
-                        <button type="submit" class="btn btn-success">Save Changes</button>
-                    </form>
-                </div>
-            </div>
-            <span class="edit">
-                <i class="uil uil-ellipsis-h"></i>
-            </span>
-        </div>
-        
-          
-    </div>
+<style>
+    input[type=text],
+    [type=url] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 50px;
+        box-sizing: border-box;
+    }
 
-</div>
+    textarea {
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 50px;
+        box-sizing: border-box;
+        scrollbar-width: 0;
+    }
+</style>
 
-    
-    
+<form method="post" class="create-post" style="display: flex; flex-direction: column; ">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% comment %} <a href="{% url 'project-detail' project.pk %}" class="btn btn-secondary">Cancel</a> {% endcomment %}
+    <button type="submit" class="btn btn-success">Save Changes</button>
+</form>
+
+
+
+
+
+
+
 {% endblock content %}

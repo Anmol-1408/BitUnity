@@ -11,9 +11,10 @@ class Project(models.Model):
     created_on = models.DateTimeField(default = timezone.now)
     project_name = models.CharField(max_length=150,null = False)
     project_description = models.TextField(null = False)
-    institute = models.CharField(max_length=150,null = False,default = "")
-    university = models.CharField(max_length=150,null = True,default = "")
+    institute = models.CharField(max_length=150,null = False)
+    university = models.CharField(max_length=150,null = True)
     project_url = models.URLField(max_length=300,null = False)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes')
 
 class Comment(models.Model):
     comment = models.TextField()
@@ -27,7 +28,9 @@ class UserProfile(models.Model):
 	bio = models.TextField(max_length=500, blank=True, null=True)
 	birth_date=models.DateField(null=True, blank=True)
 	location = models.CharField(max_length=100, blank=True, null=True)
-	picture = models.ImageField(upload_to='uploads/profile_pictures', default='uploads/profile_pictures/default_user.jpg', blank=True)
+	picture = models.ImageField(upload_to='uploads/profile_pictures', default='uploads/profile_pictures/default.png', blank=True)
+	followers = models.ManyToManyField(User, blank=True, related_name='followers')
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -37,6 +40,11 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
 	instance.profile.save()
+
+class Star(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    saved_on = models.DateTimeField(auto_now_add=True)
 
     
 

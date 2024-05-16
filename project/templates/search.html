@@ -4,19 +4,20 @@
 <!-- ----------------MIDDLE--------------------- -->
 <div class="middle">
 
-
+    <h2>Search results : </h2>
     <!-- ----------------FEEDS--------------------- -->
     <div class="feeds">
-        {% for project in project_list %}
+        {% for project in projects %}
         <!-- ----------------FEEDS-1--------------------- -->
         <div class="feed">
             <div class="head">
                 <div class="user">
                     <div class="profile-photo">
-                        <img src="{{ project.author.profile.picture.url }}">
+                        <img src="{{ profile.picture.url }}" />
                     </div>
                     <div class="ingo">
-                        <h3><a href="{% url 'profile' project.author.profile.pk %}">{{project.author}}</a></h3>
+                        {% comment %} <h3><a href="{% url 'profile' project.author.profile.pk %}">{{project.author}}</a>
+                        </h3> {% endcomment %}
                         <small>{{project.created_on}}</small>
                     </div>
                 </div>
@@ -31,18 +32,6 @@
             <div class="projectDescription">{{project.project_description| truncatechars:200}}</div>
             <div class="institute">{{project.institute}}</div>
             <div class="university">{{project.university}}</div>
-            <div class="action-button">
-                <div class="interaction-buttons">
-
-                    <a href="{% url 'add-like' project.pk %}"><span><i class="uil uil-heart"></i> {{ project.likes.count }}</span></a>
-                    <a href="{% url 'project-detail' project.pk %}"><span><i
-                                class="uil uil-comment-alt-dots"></i></span></a>
-                </div>
-                <div class="bookmark">
-                    <span><i class="uil uil-bookmark"></i></span>
-                </div>
-            </div>
-
 
             <a href="{% url 'project-detail' project.pk %}" class="btn btn-primar">View project</a>
         </div>
