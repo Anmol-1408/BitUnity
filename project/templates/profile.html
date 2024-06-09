@@ -103,7 +103,7 @@
             <img src="new image/photo1.jpg">
         </div>
         <div class="projectName">{{project.project_name}}</div>
-        <div class="projectDescription">{{project.project_description}}</div>
+        <div class="projectDescription">{{project.project_description| truncatechars:200}}</div>
         <div class="institute">{{project.institute}}</div>
         <div class="university">{{project.university}}</div>
         <div class="action-button">

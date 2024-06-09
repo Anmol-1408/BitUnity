@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+<style>
+    .projectName, .institute, .university{
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+</style>
 
     <a href="{% url 'project-list' %}" class="btn btn-primar">back</a>
 
@@ -27,10 +33,10 @@
         <div class="photo">
             <img src="new image/photo1.jpg">
         </div>
-        <div class="projectName">{{project.project_name}}</div>
-        <div class="projectDescription">{{project.project_description}}</div>
-        <div class="institute">{{project.institute}}</div>
-        <div class="university">{{project.university}}</div>
+        <div class="projectName"><p>Project Name : {{project.project_name}}</p></div>
+        <div class="projectDescription"><p>{{project.project_description}}</p></div>
+        <div class="institute"><p>Institute : {{project.institute}}</p></div>
+        <div class="university"><p>University : {{project.university}}</p></div>
         <a href="{{project.project_url}}" class="btn btn-primar">Visit project code</a>
         <div class="action-button">
             <div class="interaction-buttons">
